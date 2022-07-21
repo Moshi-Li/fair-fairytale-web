@@ -135,8 +135,10 @@ resource "aws_instance" "fair_fairytale_server" {
   user_data = <<-EOF
                 #!/bin/bash
                 sudo apt update -y
-                sudo apt install apache2 -y
-                sudo systemctl start apache2
-                sudo bash -c 'echo Hello, Ready for Fair Fairytale? > /var/www/html/index.html'
+                sudo apt install python -y
+                git clone https://github.com/Moshi-Li/fair-fairytale-web.git
+                cd fair-fairytale-web
+                git checkout feat-init
+                /bin/bash init.sh
                 EOF
 }
