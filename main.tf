@@ -135,10 +135,10 @@ resource "aws_instance" "fair_fairytale_server" {
   user_data = <<-EOF
                 #!/bin/bash
                 sudo apt update -y
-                sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+                sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev -y
                 sudo wget https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz
                 sudo tar -xf Python-3.9.1.tgz
-                sudo cd Python-3.9.1
+                cd Python-3.9.1
                 sudo ./configure --enable-optimizations
                 sudo make -j 12
                 sudo make altinstall
@@ -146,7 +146,7 @@ resource "aws_instance" "fair_fairytale_server" {
 
                 cd ~
                 sudo git clone https://github.com/Moshi-Li/fair-fairytale-web.git
-                sudo cd fair-fairytale-web
+                cd fair-fairytale-web
                 sudo git checkout feat-init
                 cd server
                 sudo python3.9 -m pip install -r requirements.txt
