@@ -134,15 +134,20 @@ resource "aws_instance" "fair_fairytale_server" {
 
   user_data = <<-EOF
                 #!/bin/bash
+                mkdir hello_1
                 cd ~
+                mkdir hello_2
+                sudo apt remove python3.5-minimal -y
                 sudo apt update -y
-                sudo apt install python3 -y
-                sudo apt install python3-pip -y
+                sudo apt install software-properties-common -y
+                sudo add-apt-repository ppa:deadsnakes/ppa -y
+                sudo apt update -y
+                sudo apt install python3.9 -y
                 git clone https://github.com/Moshi-Li/fair-fairytale-web.git
                 cd fair-fairytale-web
                 git checkout feat-init
                 cd server
                 pip3 install -r requirements.txt
-                sudo python3 index.py
+                sudo python3.9 index.py
                 EOF
 }
