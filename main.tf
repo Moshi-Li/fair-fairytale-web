@@ -134,8 +134,10 @@ resource "aws_instance" "fair_fairytale_server" {
 
   user_data = <<-EOF
                 #!/bin/bash
+                cd ~
                 sudo apt update -y
                 sudo apt install python3 -y
+                sudo apt install python3-pip -y
                 git clone https://github.com/Moshi-Li/fair-fairytale-web.git
                 cd fair-fairytale-web
                 git checkout feat-init
