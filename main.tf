@@ -136,7 +136,7 @@ resource "aws_instance" "fair_fairytale_server" {
                 #!/bin/bash
                 cd ~
                 sudo git clone https://github.com/Moshi-Li/fair-fairytale-web.git
-                cd fair-fairytale-web
+                cd ~/fair-fairytale-web
                 sudo git checkout feat-init
                 sudo /bin/bash init.sh
                 EOF
